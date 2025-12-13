@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="job_details" name="Job Details">
+        <t t-call="website.layout">
+            <t t-if="job">
+                <div class="oe_structure container" style="margin-top: 40px; margin-bottom: 60px;">
+                    <!-- Job Header Card -->
+                    <div class="card border-0 shadow-sm" style="border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="d-flex gap-3">
+                                <!-- Job Title and Company -->
+                                <div>
+                                    <h3 style="margin: 0; font-size: 24px; font-weight: 600; color: #1a1a1a;"><t t-esc="job.name" /></h3>
+                                    <p style="margin: 4px 0 0 0; color: #0066cc; font-size: 16px; font-weight: 500;"><t t-esc="job.company" /></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Job Meta Info -->
+                        <div class="d-flex gap-4 mt-4" style="flex-wrap: wrap;">
+                            <!-- Posted -->
+                            <div class="d-flex align-items-center gap-2" style="background-color: #f8f9fa; padding: 8px 16px; border-radius: 8px;">
+                                <i class="fa fa-calendar" style="color: #ff6b35;"></i>
+                                <div>
+                                    <div style="font-size: 11px; color: #6c757d; font-weight: 500;">Posted</div>
+                                    <div style="font-size: 13px; color: #1a1a1a; font-weight: 600;"><t t-esc="job.create_date" t-options="{'widget': 'date', 'format': 'MMM dd, yyyy'}"/></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Applicants -->
+                            <div class="d-flex align-items-center gap-2" style="background-color: #f8f9fa; padding: 8px 16px; border-radius: 8px;">
+                                <i class="fa fa-user" style="color: #667eea;"></i>
+                                <div>
+                                    <div style="font-size: 11px; color: #6c757d; font-weight: 500;">Applicants</div>
+                                    <div style="font-size: 13px; color: #1a1a1a; font-weight: 600;"><t t-esc="job.all_application_count" /> people applied</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Category -->
+                            <div class="d-flex align-items-center gap-2" style="background-color: #f8f9fa; padding: 8px 16px; border-radius: 8px;">
+                                <i class="fa fa-briefcase" style="color: #e91e63;"></i>
+                                <div>
+                                    <div style="font-size: 11px; color: #6c757d; font-weight: 500;">Category</div>
+                                    <div style="font-size: 13px; color: #1a1a1a; font-weight: 600;"><t t-esc="job.department_id.name" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Description Section -->
+                    <div class="mb-4">
+                        <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Job Description</h5>
+                        <p style="color: #4a5568; line-height: 2; margin: 0;">
+                            <t t-esc="job.description"/>
+                        </p>
+                    </div>
+                    
+                    <!-- Requirements Section -->
+                    <div class="mb-4">
+                        <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Requirements</h5>
+                        <div style="color: #4a5568; line-height: 2;">
+                            <ul>
+                                <t t-foreach="job.requirement_ids" t-as="requirement">
+                                    <li><t t-esc="requirement.name" /></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- About Company Section -->
+                    <div class="card border-0" style="background-color: #f8f9fa; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                        <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px;">About <t t-esc="job.company" /></h5>
+                        
+                        <div class="d-flex gap-3 mb-3">
+                            <!-- Company Description -->
+                            <p style="color: #4a5568; line-height: 1.6; margin: 0;">
+                                <t t-out="job.about_company" t-options="{'widget': 'text'}"/>
+                            </p>
+                        </div>
+                        
+                        <!-- Company Benefits Tags -->
+                        <div class="d-flex gap-2 flex-wrap">
+                            <t t-foreach="job.benefit_ids" t-as="benefit">
+                                <span class="badge" style="background-color: #e3f2fd; color: #1976d2; font-weight: 500; padding: 6px 12px; border-radius: 6px; font-size: 12px;">
+                                    <t t-esc="benefit.name"/>
+                                </span>
+                            </t>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 justify-content-end align-items-end">
+                        <a 
+                            t-attf-href="/apply-job/{{job.id}}" 
+                            class="btn btn-primary text-light" 
+                            style="border-radius: 8px; padding: 12px 32px; font-weight: 600; background-color: #667eea; border: none; flex-grow: 1; max-width: 400px; color:white !important; text-decoration: none !important;"
+                        >
+                            Apply for this Position
+                        </a>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="oe_structure container">
+                    <div class="container" style="margin-top: 40px;">
+                        <h4 style="margin-bottom: 0px">No Job Found</h4>
+                        <p>Oops something went wrong. Please try again later. </p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

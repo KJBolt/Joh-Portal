@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pricing" name="Pricing">
+        <t t-call="website.layout">
+            <div class="oe_structure" style="background-color: #f5f5f5; padding: 80px 0;">
+                <div class="container">
+                    <!-- Header Section -->
+                    <div class="text-center mb-5">
+                        <h1 style="font-size: 48px; font-weight: 700; color: #2c3e50; margin-bottom: 16px;">Pick your perfect plan</h1>
+                        <p style="font-size: 16px; color: #7f8c8d; max-width: 600px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <!-- Pricing Cards -->
+                    <div class="row justify-content-center align-items-center" style="margin-top: 60px;">
+                        <!-- Free Plan -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card" style="border-radius: 16px; border: 1px solid #e0e0e0; background-color: white; padding: 40px 30px; height: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                                <h3 style="font-size: 24px; font-weight: 600; color: #7f8c8d; margin-bottom: 30px; text-align: center;">FREE</h3>
+                                
+                                <!-- Features List -->
+                                <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">Recommended candidates</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">Profile search settings</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">2-10 users listings</span>
+                                    </li>
+                                </ul>
+                                
+                                <!-- Price -->
+                                <div style="text-align: center; margin-bottom: 30px;">
+                                    <h2 style="font-size: 48px; font-weight: 700; color: #2c3e50; margin: 0;">
+                                        $0
+                                        <span style="font-size: 16px; font-weight: 400; color: #95a5a6;">/mo</span>
+                                    </h2>
+                                </div>
+                                
+                                <!-- Button -->
+                                <a href="#" class="btn btn-block" style="background-color: #2ecc71; color: white; border: none; border-radius: 8px; padding: 14px 24px; font-size: 16px; font-weight: 600; text-decoration: none; display: block; text-align: center;">Choose Plan</a>
+                            </div>
+                        </div>
+
+                        <!-- Standard Plan (Featured) -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card" style="border-radius: 16px; border: none; background-color: #2c3e50; padding: 50px 30px; height: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transform: scale(1.05); position: relative;">
+                                <h3 style="font-size: 24px; font-weight: 600; color: white; margin-bottom: 30px; text-align: center;">STANDARD</h3>
+                                
+                                <!-- Features List -->
+                                <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #ecf0f1;">All features in Basic</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #ecf0f1;">Search and Filtering</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #ecf0f1;">2-10 Advertisements</span>
+                                    </li>
+                                </ul>
+                                
+                                <!-- Price -->
+                                <div style="text-align: center; margin-bottom: 30px;">
+                                    <h2 style="font-size: 48px; font-weight: 700; color: white; margin: 0;">
+                                        $40
+                                        <span style="font-size: 16px; font-weight: 400; color: #95a5a6;">/mo</span>
+                                    </h2>
+                                </div>
+                                
+                                <!-- Button -->
+                                <a href="#" class="btn btn-block" style="background-color: #2ecc71; color: white; border: none; border-radius: 8px; padding: 14px 24px; font-size: 16px; font-weight: 600; text-decoration: none; display: block; text-align: center;">Choose Plan</a>
+                            </div>
+                        </div>
+
+                        <!-- Premium Plan -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card" style="border-radius: 16px; border: 1px solid #e0e0e0; background-color: white; padding: 40px 30px; height: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                                <h3 style="font-size: 24px; font-weight: 600; color: #7f8c8d; margin-bottom: 30px; text-align: center;">PREMIUM</h3>
+                                
+                                <!-- Features List -->
+                                <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">All features in Standard</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">AI-Job Listings</span>
+                                    </li>
+                                    <li style="margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fa fa-check-circle" style="color: #2ecc71; font-size: 18px; margin-right: 12px;"></i>
+                                        <span style="font-size: 14px; color: #7f8c8d;">Unlimited advertisements</span>
+                                    </li>
+                                </ul>
+                                
+                                <!-- Price -->
+                                <div style="text-align: center; margin-bottom: 30px;">
+                                    <h2 style="font-size: 48px; font-weight: 700; color: #2c3e50; margin: 0;">
+                                        $60
+                                        <span style="font-size: 16px; font-weight: 400; color: #95a5a6;">/mo</span>
+                                    </h2>
+                                </div>
+                                
+                                <!-- Button -->
+                                <a href="#" class="btn btn-block" style="background-color: #2ecc71; color: white; border: none; border-radius: 8px; padding: 14px 24px; font-size: 16px; font-weight: 600; text-decoration: none; display: block; text-align: center;">Choose Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

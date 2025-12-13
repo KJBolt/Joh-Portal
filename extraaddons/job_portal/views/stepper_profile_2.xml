@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="stepper_profile_2" name="Stepper Profile 2">
+        <t t-call="website.layout">
+            <!-- Header -->
+            <div class="text-center" style="padding: 40px 0 30px; background-color: #fff; border-bottom: 1px solid #e0e0e0;">
+                <h1 style="font-size: 32px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px;">Complete Your Profile</h1>
+                <p style="font-size: 16px; color: #666; margin: 0;">Set up your professional profile to start receiving job opportunities</p>
+            </div>
+            
+            <!-- Step Indicator -->
+            <div class="d-flex justify-content-center align-items-center" style="padding: 40px 0; background-color: #f8f9fa;">
+                <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; font-weight: 600; font-size: 16px; background-color: #e0e0e0; color: #999;">1</div>
+                <div style="width: 80px; height: 2px; background-color: #e0e0e0; margin: 0 10px;"></div>
+                <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; font-weight: 600; font-size: 16px; background-color: #e0e0e0; color: #999;">2</div>
+                <div style="width: 80px; height: 2px; background-color: #e0e0e0; margin: 0 10px;"></div>
+                <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; font-weight: 600; font-size: 16px; background-color: #2563eb; color: white;">3</div>
+            </div>
+            
+            <!-- Form Container -->
+            <div class="oe_structure container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                <div class="card border-0 shadow-sm" style="border-radius: 8px; padding: 40px;">
+                    <h2 style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin-bottom: 30px;">Portfolio Information</h2>
+                    
+                    <!-- Success/Error message display -->
+                    <t t-if="success">
+                        <div class="alert alert-success" role="alert">
+                            <t t-esc="success"/>
+                        </div>
+                    </t>
+                    <t t-if="error">
+                        <div class="alert alert-danger" role="alert">
+                            <t t-esc="error"/>
+                        </div>
+                    </t>
+                    
+                    <form action="/profile/submit" method="post">
+                        <!-- Portfolio Images -->
+                        <div class="mb-3">
+                            <label for="portfolio_images" class="form-label" style="font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Portfolio Images</label>
+                            <input type="file" 
+                                class="form-control" 
+                                id="portfolio_images"     
+                                name="portfolio_images" 
+                                style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                            />
+                        </div>
+
+                        <!-- Next Button -->
+                        <div class="d-flex justify-content-between" style="margin-top: 40px;">
+                            <a t-attf-href="/stepper_profile_1" style="background: transparent; border: none; color: #6b7280; font-size: 14px; font-weight: 500; padding: 10px 20px; text-decoration: none;">Back</a>
+                            <button type="submit" class="btn btn-primary text-light" style="background-color: #667eea; border: none; border-radius: 8px; padding: 10px 24px; font-size: 14px; font-weight: 600;">
+                                Proceed <i class="fa fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

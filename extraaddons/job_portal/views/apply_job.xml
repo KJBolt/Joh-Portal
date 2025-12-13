@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="apply_job" name="Apply Job">
+        <t t-call="website.layout">
+            
+            <t t-if="job">
+                <div class="oe_structure container" style="margin-top: 40px; margin-bottom: 60px;">
+                    <!-- Header -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h4 style="margin: 0; font-size: 20px; font-weight: 600; color: #1a1a1a;">Apply for <t t-esc="job.name" /></h4>
+                            <p style="margin: 4px 0 0 0; color: #6c757d; font-size: 14px;"><t t-esc="job.company" /></p>
+                        </div>
+                    </div>
+
+                    <!-- Application Form -->
+                    <form method="post" action="/apply-job/submit" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="job_id" t-att-value="job.id"/>
+
+                        <!-- Full Name and Email Address -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="fullname" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Fullname</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="fullname" 
+                                    name="fullname" 
+                                    placeholder="Full Name" 
+                                    required="required"
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email_address" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="email_address" 
+                                    name="email_address" 
+                                    placeholder="Email Address" 
+                                    required="required"
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Phone Number and Expected Salary -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="phone_number" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Phone Number</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="phone_number" 
+                                    name="phone_number" 
+                                    placeholder="Phone Number" 
+                                    required="required"
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="expected_salary" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Expected Salary</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="expected_salary" 
+                                    name="expected_salary" 
+                                    placeholder="e.g. $80,000 - $100,000" 
+                                    required="required"
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                        </div>
+                        
+                        <!-- Start Date and Portfolio Url -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="start_date" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Available Start Date</label>
+                                <input 
+                                    type="date" 
+                                    class="form-control" 
+                                    id="start_date" 
+                                    name="start_date" 
+                                    placeholder="mm/dd/yyyy" 
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="portfolio_url" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">Portfolio/Website URL</label>
+                                <input 
+                                    type="url" 
+                                    class="form-control" 
+                                    id="portfolio_url" 
+                                    name="portfolio_url" 
+                                    placeholder="https://yourportfolio.com" 
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn Profile -->
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="linkedin_profile" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">LinkedIn Profile</label>
+                                <input 
+                                    type="url" 
+                                    class="form-control" 
+                                    id="linkedin_profile" 
+                                    name="linkedin_profile" 
+                                    placeholder="https://linkedin.com/in/yourprofile" 
+                                    style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Cover Letter -->
+                        <div class="mb-3">
+                            <label for="cover_letter" class="form-label" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px;">
+                                Cover Letter <span style="color: #dc3545;">*</span>
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="cover_letter" 
+                                name="cover_letter" 
+                                rows="6" 
+                                placeholder="Tell us why you're interested in this position and what makes you a great fit..." 
+                                required="required"
+                                style="border-radius: 8px; padding: 12px 14px; border: 1px solid #dee2e6; font-size: 14px; resize: vertical;"
+                            ></textarea>
+                            <small class="form-text" style="color: #6c757d; font-size: 12px;">0/500 characters</small>
+                        </div>
+
+                        <!-- Image Proposal -->
+                        <div class="mb-4">
+                            <label class="form-label d-flex align-items-center gap-2" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 12px;">
+                                <i class="fa fa-image"></i>
+                                Image Proposal
+                            </label>
+                            <p style="font-size: 12px; color: #6c757d; margin-bottom: 12px;">Upload your image proposal (JPG, PNG, max 5MB)</p>
+                            
+                            <div class="card border-2" style="border-style: dashed; border-color: #dee2e6; border-radius: 8px; padding: 40px 20px; text-align: center; background-color: #fafafa; cursor: pointer;" onclick="document.getElementById('image_proposal').click()">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <i class="fa fa-image" style="font-size: 32px; color: #adb5bd; margin-bottom: 12px;"></i>
+                                    <p style="margin: 0; font-size: 14px; font-weight: 500; color: #6c757d;">Click to upload or drag and drop</p>
+                                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #adb5bd;">JPG, PNG (max. 5MB)</p>
+                                </div>
+                                <input 
+                                    type="file" 
+                                    class="form-control" 
+                                    id="image_proposal" 
+                                    name="image_proposal" 
+                                    accept="image/jpeg,image/png" 
+                                    style="display: none;"
+                                />
+                            </div>
+                            <div id="image_preview" style="margin-top: 12px; display: none;"></div>
+                        </div>
+
+                        <!-- Video Proposal -->
+                        <div class="mb-4">
+                            <label class="form-label d-flex align-items-center gap-2" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 12px;">
+                                <i class="fa fa-video-camera"></i>
+                                Video Proposal (Optional)
+                            </label>
+                            <p style="font-size: 12px; color: #6c757d; margin-bottom: 12px;">Upload your video proposal (MP4, MOV, max 20MB)</p>
+                            
+                            <div class="card border-2" style="border-style: dashed; border-color: #dee2e6; border-radius: 8px; padding: 40px 20px; text-align: center; background-color: #fafafa; cursor: pointer;" onclick="document.getElementById('video_proposal').click()">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <i class="fa fa-video-camera" style="font-size: 32px; color: #adb5bd; margin-bottom: 12px;"></i>
+                                    <p style="margin: 0; font-size: 14px; font-weight: 500; color: #6c757d;">Click to upload or drag and drop</p>
+                                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #adb5bd;">MP4, MOV (max. 20MB)</p>
+                                </div>
+                                <input 
+                                    type="file" 
+                                    class="form-control" 
+                                    id="video_proposal" 
+                                    name="video_proposal" 
+                                    accept="video/mp4,video/quicktime" 
+                                    style="display: none;"
+                                />
+                            </div>
+                            <div id="video_preview" style="margin-top: 12px; display: none;">
+                                <p style="font-size: 12px; color: #28a745; margin: 8px 0 0 0;">
+                                    <i class="fa fa-check-circle"></i> Video selected
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Resume Upload -->
+                        <div class="mb-4">
+                            <label class="form-label d-flex align-items-center gap-2" style="font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 12px;">
+                                <i class="fa fa-file-text-o"></i>
+                                Resume Upload
+                            </label>
+                            <p style="font-size: 12px; color: #6c757d; margin-bottom: 12px;">Please attach your resume (PDF, DOC, or DOCX format)</p>
+                            
+                            <div class="card border-2" style="border-style: dashed; border-color: #dee2e6; border-radius: 8px; padding: 40px 20px; text-align: center; background-color: #fafafa;">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <i class="fa fa-upload" style="font-size: 32px; color: #adb5bd; margin-bottom: 12px;"></i>
+                                    <p style="margin: 0; font-size: 14px; font-weight: 500; color: #6c757d;">Click to upload CV</p>
+                                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #adb5bd;">File upload functionality will be available after form submission</p>
+                                </div>
+                                <input 
+                                    type="file" 
+                                    class="form-control" 
+                                    id="resume" 
+                                    name="resume" 
+                                    accept=".pdf,.doc,.docx" 
+                                    style="display: none;"
+                                />
+                            </div>
+                        </div>
+
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-3 justify-content-end">
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-secondary" 
+                                style="border-radius: 8px; padding: 10px 24px; font-weight: 500; border-color: #dee2e6; color: black;"
+                            >
+                                Cancel
+                            </button>
+                            <button 
+                                type="submit"
+                                class="btn btn-primary text-light" 
+                                style="border-radius: 8px; padding: 10px 32px; font-weight: 600; background-color: #667eea; border: none;"
+                            >
+                                Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="oe_structure container">
+                    <div class="container" style="margin-top: 40px;">
+                        <h4 style="margin-bottom: 0px">No Job Found</h4>
+                        <p>Oops something went wrong. Please try again later. </p>
+                    </div>
+                </div>
+            </t>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Handle image preview
+                    const imageInput = document.getElementById('image_proposal');
+                    const imagePreview = document.getElementById('image_preview');
+                    
+                    if (imageInput &amp;&amp; imagePreview) {
+                        imageInput.addEventListener('change', function(e) {
+                            const file = this.files[0];
+                            if (file) {
+                                // Validate file type
+                                if (!file.type.match('image.*')) {
+                                    alert('Please select an image file');
+                                    return;
+                                }
+                                
+                                const reader = new FileReader();
+                                reader.onload = function(event) {
+                                    var imgElement = document.createElement('img');
+                                    imgElement.src = event.target.result;
+                                    imgElement.style.cssText = 'width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2ecc71; display: block;';
+                                    imgElement.alt = file.name;
+                                    
+                                    imagePreview.innerHTML = '';
+                                    var container = document.createElement('div');
+                                    container.style.cssText = 'display: flex; align-items: center; gap: 12px;';
+                                    
+                                    var imgWrapper = document.createElement('div');
+                                    imgWrapper.style.cssText = 'position: relative; width: 80px; height: 80px;';
+                                    
+                                    var textDiv = document.createElement('div');
+                                    textDiv.style.cssText = 'flex: 1;';
+                                    textDiv.innerHTML = '<p style="margin: 0; font-size: 14px; font-weight: 600; color: #2c3e50;">' + file.name + '</p>' +
+                                        '<p style="margin: 4px 0 0 0; font-size: 12px; color: #28a745;">' +
+                                        '<i class="fa fa-check-circle"></i> ' + (file.size / 1024 / 1024).toFixed(2) + ' MB</p>';
+                                    
+                                    var closeBtn = document.createElement('button');
+                                    closeBtn.type = 'button';
+                                    closeBtn.innerHTML = '<i class="fa fa-times"></i>';
+                                    closeBtn.style.cssText = 'position: absolute; top: -8px; right: -8px; background: #dc3545; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2);';
+                                    closeBtn.onclick = function() {
+                                        imageInput.value = '';
+                                        imagePreview.innerHTML = '';
+                                        imagePreview.style.display = 'none';
+                                    };
+                                    
+                                    imgWrapper.appendChild(imgElement);
+                                    imgWrapper.appendChild(closeBtn);
+                                    container.appendChild(imgWrapper);
+                                    container.appendChild(textDiv);
+                                    imagePreview.appendChild(container);
+                                    imagePreview.style.display = 'block';
+                                };
+                                reader.onerror = function() {
+                                    console.error('Error reading image file');
+                                    alert('Error reading image file');
+                                };
+                                reader.readAsDataURL(file);
+                            } else {
+                                imagePreview.innerHTML = '';
+                                imagePreview.style.display = 'none';
+                            }
+                        });
+                    }
+                    
+                    // Handle video preview
+                    const videoInput = document.getElementById('video_proposal');
+                    const videoPreview = document.getElementById('video_preview');
+                    
+                    if (videoInput) {
+                        videoInput.addEventListener('change', function(e) {
+                            const file = this.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function(event) {
+                                    var videoElement = document.createElement('video');
+                                    videoElement.src = event.target.result;
+                                    videoElement.style.cssText = 'width: 120px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid #2ecc71;';
+                                    videoElement.controls = true;
+                                    
+                                    videoPreview.innerHTML = '';
+                                    var container = document.createElement('div');
+                                    container.style.cssText = 'display: flex; align-items: center; gap: 12px;';
+                                    
+                                    var videoWrapper = document.createElement('div');
+                                    videoWrapper.style.cssText = 'position: relative; width: 120px; height: 80px;';
+                                    
+                                    var textDiv = document.createElement('div');
+                                    textDiv.style.cssText = 'flex: 1;';
+                                    textDiv.innerHTML = '<p style="margin: 0; font-size: 14px; font-weight: 600; color: #2c3e50;">' + file.name + '</p>' +
+                                        '<p style="margin: 4px 0 0 0; font-size: 12px; color: #28a745;">' +
+                                        '<i class="fa fa-check-circle"></i> ' + (file.size / 1024 / 1024).toFixed(2) + ' MB</p>';
+                                    
+                                    var closeBtn = document.createElement('button');
+                                    closeBtn.type = 'button';
+                                    closeBtn.innerHTML = '<i class="fa fa-times"></i>';
+                                    closeBtn.style.cssText = 'position: absolute; top: -8px; right: -8px; background: #dc3545; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2);';
+                                    closeBtn.onclick = function() {
+                                        videoInput.value = '';
+                                        videoPreview.innerHTML = '';
+                                        videoPreview.style.display = 'none';
+                                    };
+                                    
+                                    videoWrapper.appendChild(videoElement);
+                                    videoWrapper.appendChild(closeBtn);
+                                    container.appendChild(videoWrapper);
+                                    container.appendChild(textDiv);
+                                    videoPreview.appendChild(container);
+                                    videoPreview.style.display = 'block';
+                                };
+                                reader.readAsDataURL(file);
+                            } else {
+                                videoPreview.innerHTML = '';
+                                videoPreview.style.display = 'none';
+                            }
+                        });
+                    }
+                    
+                    // Handle resume preview
+                    const resumeInput = document.getElementById('resume');
+                    const resumeContainer = resumeInput ? resumeInput.closest('.mb-4') : null;
+                    
+                    if (resumeInput &amp;&amp; resumeContainer) {
+                        // Make resume upload clickable
+                        const resumeDropZone = resumeInput.previousElementSibling;
+                        if (resumeDropZone) {
+                            resumeDropZone.style.cursor = 'pointer';
+                            resumeDropZone.addEventListener('click', function() {
+                                resumeInput.click();
+                            });
+                        }
+                        
+                        // Create preview element for resume
+                        let resumePreview = document.getElementById('resume_preview');
+                        if (!resumePreview) {
+                            resumePreview = document.createElement('div');
+                            resumePreview.id = 'resume_preview';
+                            resumePreview.style.marginTop = '12px';
+                            resumePreview.style.display = 'none';
+                            resumeContainer.appendChild(resumePreview);
+                        }
+                        
+                        resumeInput.addEventListener('change', function(e) {
+                            const file = this.files[0];
+                            if (file) {
+                                const fileExt = file.name.split('.').pop().toUpperCase();
+                                let icon = 'fa-file-text-o';
+                                if (fileExt === 'PDF') icon = 'fa-file-pdf-o';
+                                else if (fileExt === 'DOC' || fileExt === 'DOCX') icon = 'fa-file-word-o';
+                                
+                                resumePreview.innerHTML = '<div style="display: flex; align-items: center; gap: 12px; padding: 12px; background-color: #f8f9fa; border-radius: 8px; border: 2px solid #2ecc71;">' +
+                                    '<i class="fa ' + icon + '" style="font-size: 40px; color: #667eea;"></i>' +
+                                    '<div style="flex: 1;">' +
+                                    '<p style="margin: 0; font-size: 14px; font-weight: 600; color: #2c3e50;">' + file.name + '</p>' +
+                                    '<p style="margin: 4px 0 0 0; font-size: 12px; color: #28a745;">' +
+                                    '<i class="fa fa-check-circle"></i> ' + (file.size / 1024).toFixed(2) + ' KB - ' + fileExt + ' File</p>' +
+                                    '</div>' +
+                                    '</div>';
+                                resumePreview.style.display = 'block';
+                            } else {
+                                resumePreview.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            </script>
+        </t>
+    </template>
+</odoo>

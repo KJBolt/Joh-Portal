@@ -1,5 +1,5 @@
 {
-    'name': 'Job Portal',
+    'name': 'Skilled Abilities',
     'category': 'Generic Modules/Human Resources',
     'author': 'GeoiWorks',
     'version': '17.0.1.0.2',
@@ -7,14 +7,31 @@
     'license': 'LGPL-3',
     'summary': 'Job Portal',
     'description': """Job Portal.""",
-    'depends': ['website_hr_recruitment'],
+    'depends': ['website_hr_recruitment', 'contacts'],
     'data': [
         'views/hide_menus.xml',
+        'views/all_jobs.xml',
+        'views/job_details.xml',
+        'views/apply_job.xml',
+        'views/pricing.xml',
+        'views/home.xml',
+        'views/hr_job_inherit.xml',
+        'views/application_submitted.xml',
+        'views/hr_applicant_inherit.xml',
+        'views/job_details_new.xml',
+        'views/stepper_profile.xml',
+        'views/stepper_profile_1.xml',
+        'views/stepper_profile_2.xml',
+        'security/ir.model.access.csv',
     ],
     'assets': {
-        'web.assets_frontend': [],
+        'web.assets_frontend': [
+            'job_portal/static/src/css/style.css',
+        ],
 
-        'web.assets_backend': [],
+        'web.assets_backend': [
+            'job_portal/static/src/css/style.css',
+        ],
     },
     'images': [],
     'application': True,

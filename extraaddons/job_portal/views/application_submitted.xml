@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="application_submitted" name="Application Submitted">
+        <t t-call="website.layout">
+            <div class="oe_structure container" style="margin-top: 80px; margin-bottom: 80px;">
+                <!-- Success Card -->
+                <div class="d-flex justify-content-center">
+                    <div class="text-center" style="max-width: 600px;">
+                        <!-- Success Icon -->
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="d-flex align-items-center justify-content-center" 
+                                style="width: 80px; height: 80px; border-radius: 50%; background-color: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                                <i class="fa fa-check" style="font-size: 36px; color: white;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Success Heading -->
+                        <h1 style="font-size: 36px; font-weight: 700; color: #0891b2; margin-bottom: 20px;">Success!</h1>
+
+                        <!-- Subheading -->
+                        <h4 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px;">
+                            Your application has been submitted
+                        </h4>
+
+                        <!-- Description -->
+                        <p style="font-size: 15px; color: #6c757d; line-height: 1.6; margin-bottom: 32px;">
+                            Thank you for your interest in joining our team. We've received your application and our hiring team will review it carefully.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="/jobs" 
+                                class="btn btn-primary text-light" 
+                                style="border-radius: 8px; padding: 12px 32px; font-weight: 600; background-color: #667eea; border: none; text-decoration: none !important;">
+                                Browse More Jobs
+                            </a>
+                            <a href="/" 
+                                class="btn btn-outline-secondary" 
+                                style="border-radius: 8px; padding: 12px 32px; font-weight: 500; border-color: #dee2e6; color: #1a1a1a; text-decoration: none !important;">
+                                Go to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
