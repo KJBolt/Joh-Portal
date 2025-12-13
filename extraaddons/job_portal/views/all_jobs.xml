@@ -31,7 +31,7 @@
                             </button>
 
                             <!-- Search button -->
-                            <button type="submit" class="btn px-3 text-light" style="background-color: #667eea;">
+                            <button type="submit" class="btn px-3 text-light" style="background-color: #0a66c2">
                                 Search
                             </button>
                         </form>
@@ -45,7 +45,7 @@
                                 <div style="background: #fff; border-radius: 18px; box-shadow: 0 2px 16px rgba(79,70,229,0.06); padding: 28px 22px;">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <h6 style="font-weight: 500; color: #22223b; margin-bottom: 0;">Filters</h6>
-                                        <a href="#" style="color: #2563eb; font-size: 0.80rem; font-weight: 500; text-decoration: none;">Reset All</a>
+                                        <a href="#" style="color: #0a66c2; font-size: 0.80rem; font-weight: 500; text-decoration: none;">Reset All</a>
                                     </div>
                                     <!-- Job Type -->
                                     <div class="mb-4">
@@ -70,7 +70,7 @@
                                     <div class="mb-4">
                                         <div style="font-size: 0.98rem; font-weight: 600; color: #64748b; margin-bottom: 10px;">SALARY RANGE</div>
                                         <div style="margin-bottom: 8px;">
-                                            <input type="range" min="50000" max="200000" value="125000" style="width: 100%; accent-color: #2563eb;"/>
+                                            <input type="range" min="50000" max="200000" value="125000" style="width: 100%; accent-color: #0a66c2"/>
                                         </div>
                                         <div class="d-flex justify-content-between" style="font-size: 0.97rem; color: #22223b;">
                                             <span>$50k</span>
@@ -100,7 +100,7 @@
                                 <!-- Showing Jobs -->
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <div style="font-size: 1.15rem; font-weight: 600; color: #22223b;">
-                                        Showing <span style="color: #2563eb; font-weight: 700;">100</span> Jobs
+                                        Showing <span style="color: #0a66c2; font-weight: 700;">100</span> Jobs
                                     </div>
                                     <div class="d-flex align-items-center" style="gap: 8px;">
                                         <span style="color: #64748b; font-size: 0.98rem; font-weight: 500;">Sort by:</span>
@@ -150,7 +150,7 @@
                                                 </div>
                                                 <!-- Right Side Actions -->
                                                 <div style="flex-shrink: 0;">
-                                                    <a t-attf-href="/job-details-new/{{job.id}}" class="btn px-4 text-light" style="border-radius: 6px; font-weight: 500; text-decoration: none !important; color: white !important; background-color: #667eea; white-space: nowrap;">View Details</a>
+                                                    <a t-attf-href="/job-details-new/{{job.id}}" class="btn px-4 text-light" style="border-radius: 6px; font-weight: 500; text-decoration: none !important; color: white !important; background-color: #0a66c2; white-space: nowrap;">View Details</a>
                                                 </div>
                                             </div>
                                         </div>
