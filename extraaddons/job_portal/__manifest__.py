@@ -7,7 +7,7 @@
     'license': 'LGPL-3',
     'summary': 'Job Portal',
     'description': """Job Portal.""",
-    'depends': ['website_hr_recruitment', 'contacts'],
+    'depends': ['website_hr_recruitment', 'contacts', 'website', 'hr_recruitment'],
     'data': [
         'views/hide_menus.xml',
         'views/all_jobs.xml',

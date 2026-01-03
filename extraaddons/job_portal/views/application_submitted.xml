@@ -29,7 +29,7 @@
 
                         <!-- Action Buttons -->
                         <div class="d-flex gap-3 justify-content-center flex-wrap">
-                            <a href="/jobs" 
+                            <a href="/all-jobs" 
                                 class="btn btn-primary text-light" 
                                 style="border-radius: 8px; padding: 12px 32px; font-weight: 600; background-color: #667eea; border: none; text-decoration: none !important;">
                                 Browse More Jobs

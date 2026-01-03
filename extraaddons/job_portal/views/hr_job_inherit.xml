@@ -15,6 +15,8 @@
                 <xpath expr="//notebook/page[@name='recruitment_page']" position="after">
                     <page name="other_details" string="Other Details">
                         <group>
+                        
+                            <field name="experience_level"/>
                             <field name="salary"/>
                             <field name="company"/>
                             <field name="about_company"/>
@@ -41,6 +43,20 @@
                         confirm="Are you sure you want to delete this requirement? This action cannot be undone!"
                     />
                 </tree>
+            </field>
+        </record>
+
+
+        <!-- Override Kanban View to Disable Quick Create -->
+        <record id="hr_job_kanban_inherit" model="ir.ui.view">
+            <field name="name">hr.job.kanban.inherit</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr_recruitment.view_hr_job_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="attributes">
+                    <attribute name="quick_create">false</attribute>
+                    <attribute name="on_create"></attribute>
+                </xpath>
             </field>
         </record>
     </data>

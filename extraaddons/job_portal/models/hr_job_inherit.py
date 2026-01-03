@@ -6,7 +6,7 @@ class JobBenefit(models.Model):
     
     name = fields.Char(string='Benefit Name', required=True)
     color = fields.Integer(string='Color Index')
-
+    
 class JobRequirements(models.Model):
     _name = 'hr.job.requirement'
     _description = 'Job Requirements'
@@ -24,8 +24,19 @@ class JobRequirements(models.Model):
 class HRJobInherit(models.Model):
     _inherit = 'hr.job'
 
-    salary = fields.Char(string='Salary', required=True, default="Negotiable")
+    salary = fields.Integer(string='Salary', required=True)
     requirement_ids = fields.Many2many('hr.job.requirement', string='Requirements', required=True)
     company = fields.Char(string='Company', required=True)
     about_company = fields.Text(string="About Company", required=True)
     benefit_ids = fields.Many2many('hr.job.benefit', string='Benefits')
+    experience_level = fields.Selection([
+        ('beginner', 'Beginner'),
+        ('intermediate', 'Intermediate'),
+        ('senior', 'Senior')
+    ], string="Experience Level", required=True)
+
+    @api.constrains('requirement_ids')
+    def check_requirement_ids(self):
+        for record in self:
+            if not record.requirement_ids:
+                raise ValueError('Requirement Fields are required')

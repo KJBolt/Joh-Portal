@@ -2,199 +2,111 @@
 <odoo>
     <template id="job_details_new" name="job_details_new">
         <t t-call="website.layout">
+            <t t-set="head_title"><t t-esc="job.name"/></t>
             <t t-if="job">
                 <div class="oe_structure container" style="margin-top: 40px; margin-bottom: 60px;">
-                    <div class="row">
-                        <!-- Left Column - Job Details -->
-                        <div class="col-lg-8 col-md-7 mb-4">
-                            <!-- Job Header -->
-                            <div class="mb-4">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h2 style="font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px;">
-                                            <t t-esc="job.name"/>
-                                        </h2>
-                                        <span class="badge" style="background-color: #ff6b6b; color: white; font-weight: 500; padding: 4px 12px; border-radius: 4px; font-size: 12px;">
-                                            Urgent
-                                        </span>
-                                    </div>
-                                    <div class="text-end">
-                                        <h3 style="font-size: 24px; font-weight: 700; color: #1a1a1a; margin: 0;">
-                                            <t t-esc="job.salary"/>
-                                        </h3>
-                                        <p style="font-size: 13px; color: #6c757d; margin: 0;">Project Budget</p>
-                                    </div>
+                    <!-- Job Details -->
+                    <div class="col-12 mb-4">
+                        <!-- Job Header -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h2 style="font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px;">
+                                        <t t-esc="job.name"/>
+                                    </h2>
                                 </div>
-
-                                <!-- Meta Info -->
-                                <div class="d-flex gap-3 flex-wrap" style="font-size: 14px; color: #6c757d; margin-bottom: 16px;">
-                                    <span><i class="fa fa-briefcase" style="margin-right: 6px;"></i><t t-esc="job.department_id.name or 'N/A'"/></span>
-                                    <span><i class="fa fa-map-marker" style="margin-right: 6px;"></i><t t-esc="job.address_id.name or 'San Francisco, CA'"/></span>
-                                    <span><i class="fa fa-clock-o" style="margin-right: 6px;"></i>Posted <t t-esc="job.create_date" t-options="{'widget': 'date', 'format': 'MMM dd, yyyy'}" /></span>
-                                    <span><i class="fa fa-user" style="margin-right: 6px;"></i><t t-esc="job.all_application_count or 0"/> proposals</span>
+                                <div class="text-end">
+                                    <h3 style="font-size: 24px; font-weight: 700; color: #1a1a1a; margin: 0;">
+                                        GHS <t t-esc="job.salary"/>
+                                    </h3>
+                                    <p style="font-size: 13px; color: #6c757d; margin: 0;">Project Budget</p>
                                 </div>
                             </div>
 
-                            <!-- Project Details Grid -->
-                            <div class="row mb-4">
-                                <div class="col-md-4 mb-3">
-                                    <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
-                                        <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Project Type</p>
-                                        <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;"><t t-esc="job.contract_type_id.name or 'Fixed Price'"/></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
-                                        <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Experience Level</p>
-                                        <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;">5 yrs</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
-                                        <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Timeline</p>
-                                        <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;">3-5 days</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project Description -->
-                            <div class="mb-4">
-                                <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Project Description</h5>
-                                <p style="color: #677081ff !important; line-height: 1.8; margin: 0; font-size: 12px;">
-                                    <t t-out="job.description"/>
-                                </p>
-                            </div>
-
-                            <!-- Requirements -->
-                            <div class="mb-4">
-                                <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Requirements</h5>
-                                <div style="color: #4a5568; line-height: 1.8; font-size: 14px;">
-                                    <ul style="padding-left: 20px;">
-                                        <t t-foreach="job.requirement_ids" t-as="requirement">
-                                            <li style="margin-bottom: 8px;">
-                                                <t t-esc="requirement.name"/>
-                                            </li>
-                                        </t>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Required Skills -->
-                            <div class="mb-4">
-                                <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Perks</h5>
-                                <div class="d-flex gap-2 flex-wrap">
-                                    <t t-foreach="job.benefit_ids" t-as="benefit">
-                                        <span class="badge" style="background-color: #e7f3ff; color: #667eea; font-weight: 500; padding: 8px 16px; border-radius: 6px; font-size: 13px;">
-                                            <t t-esc="benefit.name"/>
-                                        </span>
-                                    </t>
-                                </div>
-                            </div>
-
-                            <!-- Action Button -->
-                            <div class="mt-4">
-                                <a t-attf-href="/apply-job/{{job.id}}" 
-                                   class="btn btn-primary text-light" 
-                                   style="border-radius: 8px; padding: 14px 32px; font-weight: 600; background-color: #667eea; border: none; width: 100%; color: white !important; text-decoration: none !important; font-size: 16px;">
-                                    <i class="fa fa-paper-plane" style="margin-right: 8px;"></i>Submit Proposal
-                                </a>
-                                <button type="button" 
-                                        class="btn btn-outline-secondary mt-2" 
-                                        style="border-radius: 8px; padding: 14px 32px; font-weight: 600; width: 100%; font-size: 16px;">
-                                    <i class="fa fa-bookmark-o" style="margin-right: 8px;"></i>Save Job
-                                </button>
+                            <!-- Meta Info -->
+                            <div class="d-flex gap-3 flex-wrap" style="font-size: 14px; color: #6c757d; margin-bottom: 16px;">
+                                <span t-if="job.department_id.name">
+                                    <i class="fa fa-briefcase" style="margin-right: 6px;"></i>
+                                    <t t-esc="job.department_id.name"/>
+                                </span>
+                                <span t-if="job.address_id.city">
+                                    <i class="fa fa-map-marker" style="margin-right: 6px;"></i>
+                                    <t t-esc="job.address_id.city"/>
+                                </span>
+                                <span>
+                                    <i class="fa fa-clock-o" style="margin-right: 6px;"></i>
+                                    Posted <t t-esc="job.create_date" t-options="{'widget': 'date', 'format': 'MMM dd, yyyy'}" />
+                                </span>
+                                <span t-if="job.all_application_count">
+                                    <i class="fa fa-user" style="margin-right: 6px;"></i>
+                                    <t t-esc="job.all_application_count"/> proposals
+                                </span>
                             </div>
                         </div>
 
-                        <!-- Right Column - Client Info -->
-                        <div class="col-lg-4 col-md-5">
-                            <!-- Client Card -->
-                            <div class="card border-0 shadow-sm" style="border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-                                <div class="text-center mb-3">
-                                    <div class="d-inline-block position-relative mb-2">
-                                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #667eea; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; font-weight: 600;">
-                                            <t t-esc="job.company[0] if job.company else 'C'"/>
-                                        </div>
-                                    </div>
-                                    <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px;">
-                                        <t t-esc="job.company or 'Client Name'"/>
-                                    </h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-1" style="font-size: 13px; color: #10b981;">
-                                        <i class="fa fa-check-circle"></i>
-                                        <span style="font-weight: 500;">Verified Client</span>
-                                    </div>
-                                </div>
-
-                                <hr style="margin: 20px 0; border-color: #e5e7eb;"/>
-
-                                <!-- Client Stats -->
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span style="font-size: 14px; color: #6c757d;">Rating</span>
-                                        <div class="d-flex align-items-center gap-1">
-                                            <i class="fa fa-star" style="color: #fbbf24; font-size: 14px;"></i>
-                                            <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;">4.8</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span style="font-size: 14px; color: #6c757d;">Jobs Posted</span>
-                                        <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;">12</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span style="font-size: 14px; color: #6c757d;">Hire Rate</span>
-                                        <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;">85%</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span style="font-size: 14px; color: #6c757d;">Total Spent</span>
-                                        <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;">$15,000+</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span style="font-size: 14px; color: #6c757d;">Member Since</span>
-                                        <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;">March 2022</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span style="font-size: 14px; color: #6c757d;">Location</span>
-                                        <span style="font-size: 15px; font-weight: 600; color: #1a1a1a;"><t t-esc="job.address_id.name or 'San Francisco, CA'"/></span>
-                                    </div>
-                                </div>
-
-                                <hr style="margin: 20px 0; border-color: #e5e7eb;"/>
-
-                                <!-- Action Buttons -->
-                                <div class="d-flex flex-column gap-2">
-                                    <button type="button" 
-                                            class="btn btn-outline-primary" 
-                                            style="border-radius: 8px; padding: 10px 20px; font-weight: 500; border-color: #667eea; color: #667eea; font-size: 14px;">
-                                        <i class="fa fa-envelope-o" style="margin-right: 6px;"></i>Contact Client
-                                    </button>
-                                    <button type="button" 
-                                            class="btn btn-outline-secondary" 
-                                            style="border-radius: 8px; padding: 10px 20px; font-weight: 500; font-size: 14px;">
-                                        <i class="fa fa-user" style="margin-right: 6px;"></i>View Profile
-                                    </button>
+                        <!-- Project Details Grid -->
+                        <div class="row mb-4">
+                            <div class="col-md-4 mb-3">
+                                <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
+                                    <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Project Type</p>
+                                    <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;"><t t-esc="job.contract_type_id.name or 'Fixed Price'"/></p>
                                 </div>
                             </div>
-
-                            <!-- Similar Jobs Card -->
-                            <div class="card border-0 shadow-sm" style="border-radius: 12px; padding: 24px;">
-                                <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px;">Similar Jobs</h5>
-                                
-                                
-                                <div class="mb-3 pb-3" style="border-bottom: 1px solid #e5e7eb;">
-                                    <h6 style="font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px;">
-                                        <a style="color: #1a1a1a; text-decoration: none;">
-                                            Test
-                                        </a>
-                                    </h6>
-                                    <p style="font-size: 13px; color: #667eea; margin-bottom: 6px; font-weight: 500;">
-                                        Test
-                                    </p>
-                                    <div class="d-flex gap-2" style="font-size: 12px; color: #6c757d;">
-                                        <span><i class="fa fa-map-marker" style="margin-right: 4px;"></i>Test</span>
-                                        <span><i class="fa fa-clock-o" style="margin-right: 4px;"></i>Test</span>
-                                    </div>
+                            <div class="col-md-4 mb-3">
+                                <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
+                                    <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Experience Level</p>
+                                    <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;"><t t-esc="job.experience_level" /></p>
                                 </div>
                             </div>
+                            <div class="col-md-4 mb-3">
+                                <div style="background-color: #f8f9fa; padding: 16px; border-radius: 8px;">
+                                    <p style="font-size: 13px; color: #6c757d; margin: 0 0 4px 0; font-weight: 500;">Timeline</p>
+                                    <p style="font-size: 15px; color: #1a1a1a; margin: 0; font-weight: 600;">3-5 days</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Description -->
+                        <div class="mb-4">
+                            <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Project Description</h5>
+                            <p style="color: #677081ff !important; line-height: 1.8; margin: 0; font-size: 12px;">
+                                <t t-out="job.description"/>
+                            </p>
+                        </div>
+
+                        <!-- Requirements -->
+                        <div class="mb-4" t-if="job.requirement_ids">
+                            <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Requirements</h5>
+                            <div style="color: #4a5568; line-height: 1.8; font-size: 14px;">
+                                <ul style="padding-left: 20px;">
+                                    <t t-foreach="job.requirement_ids" t-as="requirement">
+                                        <li style="margin-bottom: 8px;">
+                                            <t t-esc="requirement.name"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Required Skills -->
+                        <div t-if="job.benefit_ids" class="mb-4">
+                            <h5 style="font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px;">Perks</h5>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <t t-foreach="job.benefit_ids" t-as="benefit">
+                                    <span class="badge" style="background-color: #e7f3ff; color: #667eea; font-weight: 500; padding: 8px 16px; border-radius: 6px; font-size: 13px;">
+                                        <t t-esc="benefit.name"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="mt-4">
+                            <a t-attf-href="/apply-job/{{job.id}}" 
+                                class="btn btn-primary text-light" 
+                                style="border-radius: 8px; padding: 14px 32px; font-weight: 600; background-color: #667eea; border: none; width: 100%; color: white !important; text-decoration: none !important; font-size: 16px;">
+                                <i class="fa fa-paper-plane" style="margin-right: 8px;"></i>Submit Proposal
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 <odoo>
     <template id="apply_job" name="Apply Job">
         <t t-call="website.layout">
-            
+            <t t-set="head_title">Find Work</t>
             <t t-if="job">
                 <div class="oe_structure container" style="margin-top: 40px; margin-bottom: 60px;">
                     <!-- Header -->
@@ -29,6 +29,7 @@
                                     name="fullname" 
                                     placeholder="Full Name" 
                                     required="required"
+                                    t-att-value="request.env.user.name if request.env.user.has_group('base.group_user') else ''"
                                     style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
                                 />
                             </div>
@@ -41,6 +42,7 @@
                                     name="email_address" 
                                     placeholder="Email Address" 
                                     required="required"
+                                    t-att-value="request.env.user.email if request.env.user.has_group('base.group_user') else ''"
                                     style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
                                 />
                             </div>
@@ -57,6 +59,7 @@
                                     name="phone_number" 
                                     placeholder="Phone Number" 
                                     required="required"
+                                    t-att-value="request.env.user.phone if request.env.user.has_group('base.group_user') else ''"
                                     style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
                                 />
                             </div>
@@ -68,6 +71,8 @@
                                     id="expected_salary" 
                                     name="expected_salary" 
                                     placeholder="e.g. $80,000 - $100,000" 
+                                    t-att-value="job.salary if job else ''"
+                                    readonly="readonly"
                                     required="required"
                                     style="border-radius: 8px; padding: 10px 14px; border: 1px solid #dee2e6; font-size: 14px;"
                                 />
