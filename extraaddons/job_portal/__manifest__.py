@@ -9,6 +9,8 @@
     'description': """Job Portal.""",
     'depends': ['website_hr_recruitment', 'contacts', 'website', 'hr_recruitment'],
     'data': [
+        'security/ir.model.access.csv',
+        'security/user_roles.xml',
         'views/hide_menus.xml',
         'views/all_jobs.xml',
         'views/job_details.xml',
@@ -22,15 +24,18 @@
         'views/stepper_profile.xml',
         'views/stepper_profile_1.xml',
         'views/stepper_profile_2.xml',
-        'security/ir.model.access.csv',
+        'views/signup_template.xml',
+        'views/job_share.xml',
     ],
     'assets': {
         'web.assets_frontend': [
             'job_portal/static/src/css/style.css',
+            'job_portal/static/src/js/change_title.js',
         ],
 
         'web.assets_backend': [
             'job_portal/static/src/css/style.css',
+            'job_portal/static/src/js/change_title.js',
         ],
     },
     'images': [],

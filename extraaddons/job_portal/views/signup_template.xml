@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add user_role field after email in auth_signup.fields -->
+    <template id="auth_signup_fields_inherit" inherit_id="auth_signup.fields">
+        <xpath expr="//input[@name='login']" position="after">
+            <div class="form-group mb-3 mt-3">
+                <label for="user_role" style="font-size: 15px;">What is your role?</label>
+                <select name="user_role" id="user_role" class="form-control form-control-sm" required="required">
+                    <option value="">Select your role</option>
+                    <option t-foreach="['jobseeker', 'employer']" 
+                            t-as="role" 
+                            t-att-value="role"
+                            t-att-selected="'selected' if user_role == role else None">
+                        <t t-esc="role.capitalize()"/>
+                    </option>
+                </select>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Hide Db field on login page -->
+    <template id="login_hide_database" inherit_id="web.login" name="Hide Database Field">
+        <xpath expr="//form//div[1]" position="replace"/>
+    </template>
+</odoo>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Hide Dashboard menu -->
-    <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
+    <!-- <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
         <field name="active">False</field>
-    </record>
+    </record> -->
 
     <!-- Hide Link Tracker menu -->
     <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
@@ -20,4 +20,20 @@
         <field name="sequence">1</field>
     </record>
 
+    <!-- Hide Contacts for employers -->
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user')), (3, ref('job_portal.group_employer'))]"/>
+    </record>
+
+    <!-- Hide Employees Menu for employers -->
+    <record id="hr.menu_hr_root" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user')), (3, ref('job_portal.group_employer'))]"/>
+    </record>
+
+    <!-- Hide Apps Menu for employers -->
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_user')), (3, ref('job_portal.group_employer'))]"/>
+    </record>
+
 </odoo>
+

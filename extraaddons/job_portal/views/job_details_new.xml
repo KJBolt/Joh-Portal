@@ -101,11 +101,16 @@
                         </div>
 
                         <!-- Action Button -->
-                        <div class="mt-4">
+                        <div class="mt-4 d-flex gap-2">
                             <a t-attf-href="/apply-job/{{job.id}}" 
                                 class="btn btn-primary text-light" 
-                                style="border-radius: 8px; padding: 14px 32px; font-weight: 600; background-color: #667eea; border: none; width: 100%; color: white !important; text-decoration: none !important; font-size: 16px;">
+                                style="border-radius: 8px; padding: 14px 32px; font-weight: 600; background-color: #667eea; border: none; width: 80%; color: white !important; text-decoration: none !important; font-size: 16px;">
                                 <i class="fa fa-paper-plane" style="margin-right: 8px;"></i>Submit Proposal
+                            </a>
+                            <a t-attf-href="/share-job/{{job.id}}" 
+                                class="btn btn-primary text-light" 
+                                style="border-radius: 8px; padding: 14px 32px; font-weight: 600; background-color: #020305; border: none; width: 20%; color: white !important; text-decoration: none !important; font-size: 16px;">
+                                <i class="fa fa-share-alt" style="margin-right: 8px;"></i>Share Job
                             </a>
                         </div>
                     </div>
