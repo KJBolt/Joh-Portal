@@ -26,6 +26,7 @@
         'views/stepper_profile_2.xml',
         'views/signup_template.xml',
         'views/job_share.xml',
+        'views/recruitment_inherit.xml',
     ],
     'assets': {
         'web.assets_frontend': [

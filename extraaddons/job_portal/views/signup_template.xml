@@ -22,4 +22,11 @@
     <template id="login_hide_database" inherit_id="web.login" name="Hide Database Field">
         <xpath expr="//form//div[1]" position="replace"/>
     </template>
+
+    <!-- Hide Login as a superuser option -->
+    <template id="login_hide_superuser" inherit_id="web.login" name="Hide Superuser Option">
+        <xpath expr="//button[contains(@class, 'btn-link') and contains(@class, 'btn-sm')]" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+    </template>
 </odoo>
