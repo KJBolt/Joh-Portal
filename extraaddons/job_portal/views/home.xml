@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="d-flex flex-md-row flex-column gap-3">
                                     <t t-if="request.env.user.has_group('base.group_user')">
-                                        <a href="/web/login?redirect=/web#action=382&amp;model=hr.job&amp;view_type=kanban&amp;cids=1&amp;menu_id=303" 
+                                        <a href="/web/login?redirect=/web#action=235&amp;model=hr.job&amp;view_type=kanban&amp;cids=1&amp;menu_id=165" 
                                             class="btn" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
