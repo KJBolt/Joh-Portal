@@ -95,6 +95,17 @@
                     outline: none;
                     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
                 }
+                
+                #shareUrlInput {
+                    user-select: all; /* Make text easier to select */
+                    -webkit-user-select: all;
+                    -moz-user-select: all;
+                }
+                
+                .copy-fallback {
+                    background-color: #fff3cd !important;
+                    border-color: #ffeaa7 !important;
+                }
             </style>
             
             <script>
@@ -103,20 +114,44 @@
                     const input = document.getElementById('shareUrlInput');
                     const successMsg = document.getElementById('copySuccess');
                     
-                    navigator.clipboard.writeText(input.value).then(function() {
-                        successMsg.classList.remove('d-none');
-                        setTimeout(function() {
-                            successMsg.classList.add('d-none');
-                        }, 3000);
-                    }).catch(function(err) {
+                    // Modern approach with Clipboard API
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(input.value).then(function() {
+                            successMsg.classList.remove('d-none');
+                            setTimeout(function() {
+                                successMsg.classList.add('d-none');
+                            }, 3000);
+                        }).catch(function(err) {
+                            console.error('Clipboard API failed:', err);
+                            fallbackCopy(input, successMsg);
+                        });
+                    } else {
                         // Fallback for older browsers
+                        fallbackCopy(input, successMsg);
+                    }
+                }
+                
+                function fallbackCopy(input, successMsg) {
+                    try {
                         input.select();
-                        document.execCommand('copy');
-                        successMsg.classList.remove('d-none');
-                        setTimeout(function() {
-                            successMsg.classList.add('d-none');
-                        }, 3000);
-                    });
+                        input.setSelectionRange(0, 99999); // For mobile devices
+                        
+                        if (document.execCommand && document.execCommand('copy')) {
+                            successMsg.classList.remove('d-none');
+                            setTimeout(function() {
+                                successMsg.classList.add('d-none');
+                            }, 3000);
+                        } else {
+                            // Last resort: show the input for manual copying
+                            input.style.display = 'block';
+                            input.focus();
+                            input.select();
+                            alert('Please copy the link manually: ' + input.value);
+                        }
+                    } catch (err) {
+                        console.error('Copy failed:', err);
+                        alert('Please copy the link manually: ' + input.value);
+                    }
                 }
                 
                 function shareOnSocial(platform) {
