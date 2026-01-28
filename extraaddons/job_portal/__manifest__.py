@@ -12,7 +12,7 @@
         'security/ir.model.access.csv',
         'security/user_roles.xml',
         'views/hide_menus.xml',
-        # 'views/all_jobs.xml',
+        'views/all_jobs.xml',
         'views/job_details.xml',
         'views/apply_job.xml',
         'views/pricing.xml',
